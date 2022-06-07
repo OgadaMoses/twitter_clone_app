@@ -3,5 +3,12 @@ moses:
   email: moseso@gmail.com
   password_digest: <%= User.digest ('password') %>
   
+seen:
+ name: Last Seen
+ email: seen@gmail.com
+ password_digest: <%= User.digest ('password') %>
+ 
+
+
 
 
