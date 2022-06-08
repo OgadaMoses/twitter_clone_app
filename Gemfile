@@ -36,6 +36,12 @@ gem "jbuilder"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
+# Pagination
+gem 'will_paginate', '3.3.0'
+
+#Pagination uses bootstrap
+gem 'bootstrap-will_paginate', '1.0.0'
+
 gem "jquery-rails"
 
 # Add faker gem

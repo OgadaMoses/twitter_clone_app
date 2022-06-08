@@ -2,12 +2,29 @@ moses:
   name: Moses Otieno
   email: moseso@gmail.com
   password_digest: <%= User.digest ('password') %>
+  admin: true
   
 seen:
  name: Last Seen
  email: seen@gmail.com
  password_digest: <%= User.digest ('password') %>
  
+lana:
+ name: Well Lana
+ email: lana@gmail.com
+ password_digest: <%= User.digest ('password') %>
+
+ mela:
+ name: Mary Mella
+ email: mella@gmail.com
+ password_digest: <%= User.digest ('password') %>
+
+ <% 30.times do |n| %>
+   user_<%= n %>:
+   name: <%= "User #{n}" %>
+   email: <%= "user-#{n}@gmail.com" %>
+   password_digest:  <%= User.digest('password') %>
+  <% end %>
 
 
 

@@ -2,7 +2,8 @@
  User.create!(name: "Moses Maurice",
                email: "mosesm@gmail.com",
                password: "password",
-               password_confirmation: "password")
+               password_confirmation: "password",
+               admin: true)
 
 
 
