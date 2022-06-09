@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-    attr_accessor :remember_token
-    before_save  { self.email.downcase! }
+    attr_accessor   :remember_token, :activation_token
+    before_save     :downcase_email
+    before_create   :cretate_activation_digest
     validates :name, presence: true, length: {  maximum:  50 }
     VALID_EMAIL_REGEX = /[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}/i
     validates :email, presence: true, length: {maximum: 255 },
@@ -43,4 +44,17 @@ BCrypt::Password.create(string, cost: cost)
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  private
+    # Converts emails to all lowercase
+    def downcase_email
+      self.email =email.downcase_email
+    end
+
+    def cretate_activation_digest
+      self.activation_token  = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
+ 
+
 end
