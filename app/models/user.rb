@@ -17,6 +17,18 @@ class User < ApplicationRecord
 BCrypt::Password.create(string, cost: cost)
   end
 
+  #activates an account
+  def activated
+    update_attribute(:activated, true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
+
+  #Sends activation email
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+
   #Returns a random token
  def User.new_token 
   SecureRandom.urlsafe_base64
@@ -30,9 +42,10 @@ BCrypt::Password.create(string, cost: cost)
  end
 
  # Returns true if the given token matches the digest
- def authenticated?(remember_token)
-  return false if remember_digest.nil?
-  BCrypt::Password.new(remember_digest).is_password?(remember_token)
+ def authenticated?(attribute, token)
+  digest = send("#{attribute}_digest")
+  return false if digest.nil?
+  BCrypt::Password.new(digest).is_password?(token)
  end
 
  # Defining the sesion token
@@ -48,7 +61,7 @@ BCrypt::Password.create(string, cost: cost)
   private
     # Converts emails to all lowercase
     def downcase_email
-      self.email =email.downcase_email
+      self.email = email.downcase
     end
 
     def cretate_activation_digest
