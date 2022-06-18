@@ -18,14 +18,8 @@ BCrypt::Password.create(string, cost: cost)
   end
 
   #activates an account
-<<<<<<< HEAD
   def activate
     update_columns(activated: true, activated_at: Time.zone.now)
-=======
-  def activated
-    update_attribute(:activated, true)
-    update_attribute(:activated_at, Time.zone.now)
->>>>>>> 16259c97f13738c1f4fa5ea35eb5ad11a885808a
   end
 
   #Sends activation email
@@ -33,7 +27,6 @@ BCrypt::Password.create(string, cost: cost)
     UserMailer.account_activation(self).deliver_now
   end
 
-<<<<<<< HEAD
   #Sets the password reset attribute
   def create_reset_digest
     self.reset_token = User.new_token
@@ -44,8 +37,6 @@ BCrypt::Password.create(string, cost: cost)
   def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
   end
-=======
->>>>>>> 16259c97f13738c1f4fa5ea35eb5ad11a885808a
 
   #Returns a random token
  def User.new_token 
