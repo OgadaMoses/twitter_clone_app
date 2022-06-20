@@ -1,9 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+orange: 
+ content: "Orange is nice"
+ created_at: <%= 10.minutes.ago %>
+ user: moses
 
-one:
-  content: MyText
-  user: one
+ banana:
+ content: "Banana is blue"
+ created_at: <%= 30.minutes.ago %>
+ user: moses
 
-two:
-  content: MyText
-  user: two
+ most_recent:
+ content: "We shall vote"
+ created_at: <%= Time.zone.now %>
+ user: moses
+ 
