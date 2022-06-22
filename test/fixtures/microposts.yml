@@ -13,3 +13,10 @@ orange:
  created_at: <%= Time.zone.now %>
  user: moses
  
+ <% 30.times do |n| %>
+ micropost_<%= n %>:
+    content: <%= Faker::Lorem.sentence(word.count: 5) %>
+    created_at: <%= 42.days.ago %>
+    user: moses
+    <% end %>
+    
