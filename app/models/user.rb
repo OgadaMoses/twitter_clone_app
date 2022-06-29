@@ -73,6 +73,11 @@ BCrypt::Password.create(string, cost: cost)
     reset_sent_at < 2.hours.ago 
   end
 
+  # Defines a proto-feed
+  def feed
+    Micropost.where("user_id=?", id)
+  end
+
   private
     # Converts emails to all lowercase
     def downcase_email
