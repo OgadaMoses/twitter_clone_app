@@ -14,7 +14,7 @@ class RelationshipsController < ApplicationController
         @user = Relationship.find(params[:id]).followed 
         current_user.unfollow(@user)
         respond to do |format|
-            format.hmtl {redirect_to @user}
+            format.hmtl { redirect_to @user }
             format.js
         end
     end 
